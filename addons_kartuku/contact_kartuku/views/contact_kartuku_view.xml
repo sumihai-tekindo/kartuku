@@ -37,7 +37,7 @@
 			<field name="view_mode">tree,form</field>
 			<field eval="False" name="view_id"/>
 			<field name="domain">[('partner_type.sequence','=',1)]</field>
-			<field name="context">{'partner_type': 1,'required'=False}</field>
+			<field name="context">{'partner_type': 1}</field>
 			<field name="search_view_id" ref="base.view_res_partner_filter"/>
 
 		</record>
@@ -52,7 +52,7 @@
 			<field name="view_mode">tree,form</field>
 			<field eval="False" name="view_id"/>
 			<field name="domain">[('partner_type.sequence','=',2)]</field>
-			<field name="context">{'partner_type': 2,'required'=False}</field>
+			<field name="context">{'partner_type': 2}</field>
 			<field name="search_view_id" ref="base.view_res_partner_filter"/>
 
 		</record>
@@ -67,7 +67,7 @@
 			<field name="view_mode">tree,form</field>
 			<field eval="False" name="view_id"/>
 			<field name="domain">[('partner_type.sequence','=',3)]</field>
-			<field name="context">{'partner_type': 3,'required'=False}</field>
+			<field name="context">{'partner_type': 3}</field>
 			<field name="search_view_id" ref="base.view_res_partner_filter"/>
 
 		</record>

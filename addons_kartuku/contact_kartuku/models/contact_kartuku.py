@@ -24,9 +24,9 @@ class Partner(models.Model):
             return partner_type and partner_type.id or False
         return False
 
-    partner_type = fields.Many2one('res.partner.type',"Type",required=True,default=get_partner_type)
+    partner_type = fields.Many2one('res.partner.type',"Type",required=False,default=get_partner_type)
     institution = fields.Many2one('res.partner',"Institution")
-
+    
 
 
 

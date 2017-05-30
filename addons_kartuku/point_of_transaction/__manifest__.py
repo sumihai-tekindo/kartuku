@@ -11,6 +11,7 @@
     'depends': ['base','stock','sale','sales_team'],
     'data': [
         'views/point_of_transaction_view.xml',
+        'views/res_partner_view.xml',
         'views/analysis_report_view.xml',
     ],
     'application': True,

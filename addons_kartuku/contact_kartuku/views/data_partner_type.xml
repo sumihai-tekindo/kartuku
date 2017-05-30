@@ -1,0 +1,68 @@
+<odoo>
+	<data>
+		<record id="sequence_partner_partner" model ="ir.sequence">
+			<field name="name">Sequence Partner Type Partner</field>
+			<field name="implementation">standard</field>
+			<field name="code">partner_partner</field>
+			<field name="prefix">P-%(year)s/</field>
+			<field name="padding">6</field>
+			<field name="active" eval="True"/>
+		</record>
+		<record id="sequence_partner_institution" model ="ir.sequence">
+			<field name="name">Sequence Partner Type Institution</field>
+			<field name="implementation">standard</field>
+			<field name="code">partner_institution</field>
+			<field name="prefix">I-%(year)s/</field>
+			<field name="padding">6</field>
+			<field name="active" eval="True"/>
+		</record>
+		<record id="sequence_partner_merchant" model ="ir.sequence">
+			<field name="name">Sequence Partner Type Merchant</field>
+			<field name="implementation">standard</field>
+			<field name="code">partner_merchant</field>
+			<field name="prefix">M-%(year)s/</field>
+			<field name="padding">6</field>
+			<field name="active" eval="True"/>
+		</record>
+
+
+
+		<record id="sequence_store" model ="ir.sequence">
+			<field name="name">Sequence Store</field>
+			<field name="implementation">standard</field>
+			<field name="code">partner_store</field>
+			<field name="prefix">S-%(year)s/</field>
+			<field name="padding">6</field>
+			<field name="active" eval="True"/>
+		</record>
+
+
+
+		<record id="partner_type_partner" model="res.partner.type">
+			<field name="sequence">1</field>
+			<field name="name">Partner</field>
+			<field name="sequence_id" ref="sequence_partner_partner"/>
+		</record>
+
+
+		<record id="partner_type_institution" model="res.partner.type">
+			<field name="sequence">2</field>
+			<field name="name">Institution</field>
+			<field name="sequence_id" ref="sequence_partner_institution"/>
+		</record>
+
+
+		<record id="partner_type_merchant" model="res.partner.type">
+			<field name="sequence">3</field>
+			<field name="name">Merchant</field>
+			<field name="sequence_id" ref="sequence_partner_merchant"/>
+		</record>
+
+
+		
+
+
+
+	</data>
+
+</odoo>

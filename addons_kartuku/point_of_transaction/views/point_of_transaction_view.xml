@@ -1,0 +1,49 @@
+<odoo>
+	<data>
+		<record id="stock_location_inherit_form" model="ir.ui.view">
+			<field name="name">stock.location.inherit.form</field>
+			<field name="model">stock.location</field>
+			<field name="inherit_id" ref="stock.view_location_form" />
+			<field name="arch" type="xml">
+
+				<xpath expr="//form/group[1]/group[1]/field[@name='return_location']" position="after">
+					<field name='active'/>
+					<field name='pot'/>
+				</xpath>
+
+				<xpath expr="//form/group[1]/group[2]/field[@name='barcode']" position="after">
+					<field name="warehouse_id" attrs="{'invisible':[('pot','!=',True)]}"/>	
+				</xpath>
+
+				<xpath expr="//form/group[1]" position="after">
+					<group>
+                        <field name="partner_ids" nolabel="1">
+                            <tree editable="bottom">
+                           		<field name="partner_id"/>
+                           		<field name="mid"/>
+                           		<field name="tid"/>
+                            </tree>
+                        </field>
+                    </group>
+				</xpath>
+
+			</field>
+		</record>
+
+
+		<record id="action_pot" model="ir.actions.act_window">
+			<field name="name">Point of Transaction</field>
+			<field name="res_model">stock.location</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field eval="False" name="view_id"/>
+			<field name="domain">[('active','=',True),('pot','=',True)]</field>
+			<field name="context">{}</field>
+			<field name="search_view_id" ref="stock.view_location_search"/>
+		</record>
+
+		<menuitem id="menu_action_pot" action="action_pot" name="Point of Transaction" parent="stock.menu_warehouse_config"/>
+
+
+	</data>
+</odoo>

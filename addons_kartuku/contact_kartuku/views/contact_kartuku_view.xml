@@ -1,0 +1,94 @@
+<odoo>
+	<data>
+		<record id="res_partner_inherit_form" model="ir.ui.view">
+			<field name="name">res.partner.inherit.form</field>
+			<field name="model">res.partner</field>
+			<field name="inherit_id" ref="base.view_partner_form" />
+			<field name="arch" type="xml">
+
+				<xpath expr="//form/sheet/group/group[1]/field[@name='website']" position="after">
+					<field name='partner_type'/>
+					<field name='institution'/>
+				</xpath>
+
+				<xpath expr="//form/sheet/group/group[1]/field[@name='category_id']" position="replace">
+					
+				</xpath>
+
+				<xpath expr="//form/sheet/group/group[2]/field[@name='lang']" position="after">
+					<field name="category_id" widget="many2many_tags" placeholder="Tags..." options="{'no_create_edit': True}"/>
+				</xpath>
+
+				<xpath expr="//form/sheet/notebook/page[3]/group[1]/group[3]/field[@name='ref']" position="attributes">
+					<attribute name="readonly">1</attribute>
+				</xpath>
+
+
+
+
+			</field>
+		</record>
+
+
+		<record id="action_partner_partner" model="ir.actions.act_window">
+			<field name="name">Partner</field>
+			<field name="res_model">res.partner</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field eval="False" name="view_id"/>
+			<field name="domain">[('partner_type.sequence','=',1)]</field>
+			<field name="context">{'partner_type': 1,'required'=False}</field>
+			<field name="search_view_id" ref="base.view_res_partner_filter"/>
+
+		</record>
+
+		<menuitem id="menu_action_partner_partner" action="action_partner_partner" name="Partner" parent="sales_team.menu_sales" sequence="2"/>
+
+
+		<record id="action_partner_institution" model="ir.actions.act_window">
+			<field name="name">Institution</field>
+			<field name="res_model">res.partner</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field eval="False" name="view_id"/>
+			<field name="domain">[('partner_type.sequence','=',2)]</field>
+			<field name="context">{'partner_type': 2,'required'=False}</field>
+			<field name="search_view_id" ref="base.view_res_partner_filter"/>
+
+		</record>
+
+		<menuitem id="menu_action_partner_institution" action="action_partner_institution" name="Institution" parent="sales_team.menu_sales" sequence="2"/>
+
+
+		<record id="action_partner_merchant" model="ir.actions.act_window">
+			<field name="name">Merchant</field>
+			<field name="res_model">res.partner</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field eval="False" name="view_id"/>
+			<field name="domain">[('partner_type.sequence','=',3)]</field>
+			<field name="context">{'partner_type': 3,'required'=False}</field>
+			<field name="search_view_id" ref="base.view_res_partner_filter"/>
+
+		</record>
+
+		<menuitem id="menu_action_partner_merchant" action="action_partner_merchant" name="Merchant" parent="sales_team.menu_sales" sequence="2"/>
+
+
+		<record id="action_store" model="ir.actions.act_window">
+			<field name="name">Store</field>
+			<field name="res_model">res.partner</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field eval="False" name="view_id"/>
+			<field name="domain">[('employee','=',False),('company_type','=','person'),('parent_id','!=',False)]</field>
+			<field name="context">{}</field>
+			<field name="search_view_id" ref="base.view_res_partner_filter"/>
+
+		</record>
+
+		<menuitem id="menu_action_store" action="action_store" name="Store" parent="sales_team.menu_sales" sequence="2"/>
+
+
+	</data>
+</odoo>

@@ -66,7 +66,7 @@ class PotAnalysis(models.Model):
 			left join stock_location sl on slp.location_id=sl.id
 			left join res_partner as store on sl.partner_id=store.id
 			left join res_country_state as store_state on store.state_id=store_state.id
-			left join res_partner as merchant on store.parent_id=merchant.id
+			left join res_partner as merchant on merchant.id=store.parent_id
 			left join res_partner as institution on merchant.institution=institution.id
 			group by slp.id,sl.id,institution.id,merchant.id,store.id,store_state.id,slp.partner_id,slp.mid,slp.tid 
 			)

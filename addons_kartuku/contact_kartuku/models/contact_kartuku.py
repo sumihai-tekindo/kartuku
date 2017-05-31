@@ -32,14 +32,16 @@ class Partner(models.Model):
 
     @api.model
     def create(self, vals):
-
+        sequence = False
         if ('employee' not in vals or not vals['employee']) and ('company_type' not in vals or vals['company_type']!='company') and ('parent_id' in vals and vals['parent_id']):
             sequence = self.env['ir.sequence'].next_by_code('partner_store')
 
         else:
-        	partner_type = vals['partner_type']
-        	partner_type = self.env['res.partner.type'].search([('id','=',partner_type)])
-        	sequence = partner_type.sequence_id.next_by_id()
+            if 'partner_type' in vals:
+            	partner_type = vals['partner_type']
+            	partner_type = self.env['res.partner.type'].search([('id','=',partner_type)])
+            	sequence = partner_type.sequence_id.next_by_id()
+
     	vals['ref'] = sequence
     	return super(Partner,self).create(vals)
 

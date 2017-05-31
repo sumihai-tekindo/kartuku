@@ -8,7 +8,7 @@
     'summary': 'PoT',
     'description': """
 """,
-    'depends': ['base','stock','sale','sales_team'],
+    'depends': ['base','stock','sale','sales_team','contact_kartuku'],
     'data': [
         'views/point_of_transaction_view.xml',
         'views/res_partner_view.xml',
